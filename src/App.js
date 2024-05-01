@@ -1,36 +1,41 @@
-import logo from './logo.svg';
 import './App.css';
 import React from 'react';
-import NoName from './NoName';
+import ExpenseItem from './components/ExpenseItem';
 
 function App() {
-      //HTML과 다르다 = 구조만 유사 : 렌더링 과정에서 HTML으로 변환
+    //HTML과 다르다 = 구조만 유사 : 렌더링 과정에서 HTML으로 변환
     //className 사용
     // <>감싸주기
     // <input/><br/> 무조건 닫아주기
     //f1-terminal-npm start
   
-    const $h2 = <h2>반가워~!~!</h2>;
-  
-  return (
+
+    //지출 항목 객체 배열
+    const expenses = [
+      {
+        title: '바나나',
+        price: 2000,
+        date: new Date(2023, 3, 23),
+      },
+      {
+        title: 'BBQ치킨',
+        price: 20000,
+        date: new Date(2023, 5, 21),
+      },
+      {
+        title: '도미노피자',
+        price: 35000,
+        date: new Date(2023, 7, 4),
+      },
+    ];
     
-    <> 
-    <NoName />
 
-      <div className='App'>
-        <h1>메롱메롱~</h1>
-        {$h2}
-      </div>
-
-      <div className='noname'>
-        <input type='text'/>
-        <p>오늘은 5월 1일 행복한 수요일 입니다.<br/>
-        오후 3시 30분 입니다.<br/>
-        I LOVE REACT
-        </p>
-      </div>
+  return (
+    <>
+      <ExpenseItem title='{expenses[0].title}' price='{expenses[0].price}' date='{expenses[0].date}'/>
+      <ExpenseItem title='{expenses[1].title}' price='{expenses[1].price}' date='{expenses[1].date}'/>
+      <ExpenseItem title='{expenses[2].title}' price='{expenses[2].price}' date='{expenses[2].date}'/>
     </>
-
   );
 }
 
