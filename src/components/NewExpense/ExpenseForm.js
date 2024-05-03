@@ -1,12 +1,14 @@
 import React, { useState } from 'react';
 import './ExpenseForm.css';
 
-const ExpenseForm = ({ onSaveExpense }) => {
+const ExpenseForm = ({ onSaveExpense, onToggle }) => {
   const [userInput, setUserInput] = useState({
     title: '',
     price: '',
     date: '',
   });
+
+  const cancelInsertHandler = () => onToggle();
 
   const titleChangeHandler = (e) => {
     // userInput이 객체 형태이기 때문에 기존값은 유지하면서, 이벤트가 발생한 입력창의 값만
@@ -38,7 +40,7 @@ const ExpenseForm = ({ onSaveExpense }) => {
 
     const newExpense = {
       title: userInput.title,
-      price: userInput.price,
+      price: +userInput.price, //+ stream 정수로 바꾸기 : 누적연산
       date: new Date(userInput.date),
     };
 
@@ -85,6 +87,9 @@ const ExpenseForm = ({ onSaveExpense }) => {
         </div>
       </div>
       <div className="new-expense__actions">
+        <button type="button" onClick={cancelInsertHandler}>
+          Cancel
+        </button>
         <button type="submit">Add Expense</button>
       </div>
     </form>
