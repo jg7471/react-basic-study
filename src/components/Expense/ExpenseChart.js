@@ -22,14 +22,17 @@ const ExpenseChart = ({ expenses }) => {
   expenses.forEach((exp) => {
     //이 월 정보는 실제 월에서 1이 감소되어 있다.
     //오히려 인덱스를 지목하기 좋아짐
+    // 실제 월에서 1을 뺀 값(인덱스) 사용(index 없음)
     const expenseMonth = exp.date.getMonth();
     const expensePrice = exp.price;
 
+    // 해당 월의 지출을 누적
     chartDataPoints[expenseMonth].value += expensePrice;
   });
 
   console.log(chartDataPoints);
 
+  // 누적된 월별 지출 데이터를 Chart 컴포넌트에 전달하여 렌더링
   return <Chart dataPoints={chartDataPoints} />;
 };
 

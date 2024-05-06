@@ -2,14 +2,17 @@ import React, { useState } from 'react';
 import './ExpenseForm.css';
 
 const ExpenseForm = ({ onSaveExpense, onToggle }) => {
+  // 사용자 입력값을 관리하는 상태 변수
   const [userInput, setUserInput] = useState({
     title: '',
     price: '',
     date: '',
   });
 
+  // 입력 취소 핸들러
   const cancelInsertHandler = () => onToggle();
 
+  // 제목 변경 핸들러
   const titleChangeHandler = (e) => {
     // userInput이 객체 형태이기 때문에 기존값은 유지하면서, 이벤트가 발생한 입력창의 값만
     // 변경하는 로직
@@ -21,6 +24,7 @@ const ExpenseForm = ({ onSaveExpense, onToggle }) => {
     });
   };
 
+  // 가격 변경 핸들러
   const priceChangeHandler = (e) => {
     setUserInput({
       ...userInput,
@@ -28,6 +32,7 @@ const ExpenseForm = ({ onSaveExpense, onToggle }) => {
     });
   };
 
+  // 날짜 변경 핸들러
   const dateChangeHandler = (e) => {
     setUserInput({
       ...userInput,
@@ -35,13 +40,14 @@ const ExpenseForm = ({ onSaveExpense, onToggle }) => {
     });
   };
 
+  // 폼 제출 핸들러
   const formSubmitHandler = (e) => {
     e.preventDefault(); // submit 차단
 
     const newExpense = {
       title: userInput.title,
-      price: +userInput.price, //+ stream 정수로 바꾸기 : 누적연산
-      date: new Date(userInput.date),
+      price: +userInput.price, // 문자열을 숫자로 변환 : 누적연산
+      date: new Date(userInput.date), // 문자열을 날짜 객체로 변환
     };
 
     onSaveExpense(newExpense); // App.js가 내려준 함수를 호출하면서, 올리고자 하는 데이터를 매개값으로 전달.

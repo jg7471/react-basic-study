@@ -4,7 +4,7 @@ import ExpenseDate from './ExpenseDate';
 import Card from '../UI/Card';
 
 const ExpenseItem = ({ title, price, date }) => {
-  // 숫자를 화폐 표기법으로 바꾸기
+  // 숫자를 화폐(한국) 표기법으로 바꾸기
   const formattedPrice = new Intl.NumberFormat('ko-KR').format(price);
 
   // let itemTitle = title;
@@ -22,6 +22,7 @@ const ExpenseItem = ({ title, price, date }) => {
     // state로 관리하는 변수는 반드시 setter로만 변경해야 합니다.
 
     setItemTitle((snapshot) => {
+      //snapshot 현재 상태값
       console.log('snapshot: ', snapshot); //1 권장(콜백함수 snapshot, 메롱 비교)
       // setter함수의 매개값으로 콜백 함수를 선언. -> 콜백 함수의 매개값으로 현재 상태변수 값이 전달.
       // return값이 변경될 상태값으로 지정.

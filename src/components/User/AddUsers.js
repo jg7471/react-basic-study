@@ -5,6 +5,7 @@ import Card from '../UI/Card';
 import ErrorModal from '../UI/Modal/ErrorModal';
 
 const AddUsers = () => {
+  // 사용자 입력값 상태 변수 설정
   const [userValue, setUserValue] = useState({
     userName: '',
     age: '',
@@ -13,6 +14,7 @@ const AddUsers = () => {
   //에러 상태 관리
   const [error, setError] = useState(null);
 
+  // 사용자 이름 입력값 변경 핸들러
   const userNameChangeHandler = (e) => {
     setUserValue((prevUserValue) => {
       return {
@@ -22,6 +24,7 @@ const AddUsers = () => {
     });
   };
 
+  // 사용자 나이 입력값 변경 핸들러
   const ageChangeHandler = (e) => {
     setUserValue((prevUserValue) => {
       return {
@@ -31,8 +34,10 @@ const AddUsers = () => {
     });
   };
 
+  // 사용자 정보 제출 핸들러
   const userSubmitHandler = (e) => {
     e.preventDefault();
+    // 입력값이 비어있는 경우
     if (userValue.userName.trim() === '' || userValue.age.trim() === '') {
       setError({
         title: '유효하지 않은 입력값',
@@ -40,6 +45,7 @@ const AddUsers = () => {
       });
       return;
     }
+    // 나이가 유효하지 않은 경우
     if (+userValue.age < 1) {
       setError({
         title: '유효하지 않은 나이의 범위',
@@ -63,6 +69,7 @@ const AddUsers = () => {
     //module.css 사용 : 충돌방지
     <>
       {/* 이방식 리액트에서 자주 씀 */}
+      {/* 에러가 존재하는 경우 ErrorModal을 렌더링 */}
       {error && (
         <ErrorModal
           title={error.title}
@@ -70,6 +77,7 @@ const AddUsers = () => {
           onConfirm={() => setError(null)}
         />
       )}
+      {/* CSS 모듈 클래스명 적용 */}
       <Card className={styles.input}>
         <form onSubmit={userSubmitHandler}>
           <label htmlFor="username">이름</label>
