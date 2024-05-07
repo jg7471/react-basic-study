@@ -27,7 +27,7 @@ const CourseInput = ({ onAdd }) => {
     }
 
     // 부모 컴포넌트로 입력된 텍스트를 전달하고 입력값 초기화
-    onAdd(enteredText); //onAdd는 부모 컴포넌트에서 CourseInput 컴포넌트로 전달된 콜백 함수
+    onAdd(enteredText); //onAdd는 부모 컴포넌트에서 CourseInput 컴포넌트로 전달된 함수 @@@흐름
     setEnteredText('');
   };
 

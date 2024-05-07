@@ -5,6 +5,7 @@ import Button from '../Button/Button';
 
 //portal 기능을 사용하기 위한 import
 import ReactDOM from 'react-dom';
+import Potal from '../Potal/Potal';
 
 // Backdrop 컴포넌트 정의
 const BackDrop = ({ onConfirm }) => {
@@ -34,6 +35,16 @@ const ModalOverlay = ({ title, message, onConfirm }) => {
 const ErrorModal = ({ title, message, onConfirm }) => {
   return (
     <>
+      {/* 포탈 컴포넌트 분할 -> Potal.js */}
+      <Potal destId="backdrop-root">
+        <BackDrop onConfirm={onConfirm} />
+      </Potal>
+
+      <Potal destId={'overlay-root'}>
+        <ModalOverlay title={title} message={message} onConfirm={onConfirm} />,
+      </Potal>
+
+      {/* 기존 포탈 2번으로 만듦
       {ReactDOM.createPortal(
         <BackDrop onConfirm={onConfirm} />,
         document.getElementById('backdrop-root'),
@@ -42,7 +53,7 @@ const ErrorModal = ({ title, message, onConfirm }) => {
       {ReactDOM.createPortal(
         <ModalOverlay title={title} message={message} onConfirm={onConfirm} />,
         document.getElementById('overlay-root'),
-      )}
+      )} */}
     </>
   );
 };

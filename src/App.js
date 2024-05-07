@@ -1,14 +1,24 @@
 import './App.css';
-import React, { useState } from 'react';
-import AddUsers from './components/User/AddUsers';
-import UserList from './components/User/UserList';
+import React, { useContext, useEffect, useState } from 'react';
+import MainHeader from './components/SideEffect/MainHeader/MainHeader';
+import Login from './components/SideEffect/Login/Login';
+import Home from './components/SideEffect/Home/Home';
+import AuthContext from './components/store/auth-context';
 
 const App = () => {
+  const { isLoggedIn } = useContext(AuthContext);
+
+  console.log('App.js : App 컴포넌트의 끝!');
   return (
-    <div>
-      <AddUsers />
-      <UserList />
-    </div>
+    <>
+      <MainHeader />
+      {/* HTML태그 */}
+      <main>
+        {/* if문 사용x */}
+        {isLoggedIn && <Home />}
+        {!isLoggedIn && <Login />}
+      </main>
+    </>
   );
 };
 
