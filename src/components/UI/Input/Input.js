@@ -1,11 +1,16 @@
 import React from 'react';
-import styles from './Input.module.css';
+import styles from './Input.module.scss';
 
-const Input = ({ id, label, type, value, isValid, ...rest }) => {
+const Input = ({ input, label, onAdd }) => {
+  const amountChangeHandler = (e) => {
+    onAdd(e.target.value);
+  };
+
   return (
-    <div className={`${styles.control} ${!isValid ? styles.invalid : ''}`}>
-      <label htmlFor={id}>{label}</label>
-      <input type={type} id={id} value={value} {...rest} />
+    <div className={styles.input}>
+      <label htmlFor={input.id}>{label}</label>
+      <input {...input} onChange={amountChangeHandler} />
+      {/* 스프레드 방식으로 뿌림 */}
     </div>
   );
 };

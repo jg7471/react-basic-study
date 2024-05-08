@@ -53,7 +53,7 @@ const passwordReducer = (state, action) => {
 };
 
 const Login = () => {
-  const { onLogin } = useContext(AuthContext);
+  const { onLogin } = useContext(AuthContext); //@@@전역??
   //useContext(AuthContext)는 AuthContext의 현재 값을 받아오는 것을 의미하며,
   //onLogin이라는 함수를 이용하여 로그인 기능을 수행
 
@@ -81,6 +81,7 @@ const Login = () => {
   // GPT 이메일과 비밀번호가 모두 유효한지 여부를 검증하기 위한 상태
   // 이메일, 패스워드가 둘 다 동시에 정상적인 상태인지 확인
   const [formIsValid, setFormIsValid] = useState(false);
+  // GPT formIsValid는 상태 변수이고, setFormIsValid는 해당 상태 변수를 업데이트하는 함수
 
   //기존의 emial 상태변수 제거함
   //상태값이 필요하다면 -> reducer에서 제공되는 상태값 활용
@@ -150,8 +151,9 @@ const Login = () => {
       <form onSubmit={submitHandler}>
         <div
           className={`${styles.control} ${
+            //JSX 요소에 클래스를 동적으로 할당하는 방법 css
             //emailIsValid === false ? styles.invalid : ''
-            !emailIsValid ? styles.invalid : '' // T / F
+            !emailIsValid ? styles.invalid : '' // 이메일이 유효하지 않으면 invalid 클래스 추가
           }`}
         >
           <label htmlFor="email">E-Mail</label>
@@ -160,12 +162,12 @@ const Login = () => {
             id="email"
             label="E-mail"
             value={emailState.value}
-            onChange={emailChangeHandler}
-            onBlur={validateEmailHandler}
+            onChange={emailChangeHandler} // 입력값이 변경될 때 호출되는 함수
+            onBlur={validateEmailHandler} // 입력란을 벗어날 때 호출되는 함수
           />
         </div>
         <div
-          className={`${styles.control} ${!pwIsValid ? styles.invalid : ''}`}
+          className={`${styles.control} ${!pwIsValid ? styles.invalid : ''}`} // 비밀번호가 유효하지 않으면 invalid 클래스 추가
         >
           <label htmlFor="password">Password</label>
           <Input
@@ -182,7 +184,7 @@ const Login = () => {
             type="submit"
             className={styles.btn}
             disabled={!formIsValid} // T/F : T일 경우 누를 수 없다 @@@
-            // 이메일과 비밀번호가 모두 유효하지 않으면 버튼 비활성화
+            // GPT 이메일과 비밀번호가 모두 유효하지 않으면 버튼 비활성화
           >
             Login
           </Button>
