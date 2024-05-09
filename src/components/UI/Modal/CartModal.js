@@ -15,6 +15,7 @@ const ModalOverlay = ({ children }) => {
 };
 
 const CartModal = ({ children, onClose }) => {
+  //@@ children 어디서? onClose : CartModal에서
   return (
     <>
       <Potal destId="backdrop-root">

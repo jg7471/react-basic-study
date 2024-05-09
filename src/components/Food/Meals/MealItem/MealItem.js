@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import styles from './MealItem.module.scss';
 import MealItemForm from './MealItemForm';
 import CartContext from '../../../store/cart-context';
-//상하구조 파악법@@@
+//상하구조 파악법@@
 
 const MealItem = ({ id, price, description, name }) => {
   //context에서 필요한 데이터 or 함수를 소비하기 위해 꺼내기
@@ -34,7 +34,6 @@ const MealItem = ({ id, price, description, name }) => {
       </div>
       <div>
         <MealItemForm id={id} onAddToCart={addToCartHandler} />
-        {/* 자식쪽에서 @@@ */}
       </div>
     </li>
   );

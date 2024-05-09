@@ -4,6 +4,7 @@ import ExpenseDate from './ExpenseDate';
 import Card from '../UI/Card';
 
 const ExpenseItem = ({ title, price, date }) => {
+  //key는 안받는?@@
   // 숫자를 화폐(한국) 표기법으로 바꾸기
   const formattedPrice = new Intl.NumberFormat('ko-KR').format(price);
 

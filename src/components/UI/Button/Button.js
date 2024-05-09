@@ -11,7 +11,6 @@ const Button = ({ type, onClick, children, className, disabled }) => {
       disabled={disabled}
     >
       {children}
-      {/* 여기서 children? @@@ */}
     </button>
   );
 };

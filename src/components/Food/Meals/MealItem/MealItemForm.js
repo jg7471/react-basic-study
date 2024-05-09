@@ -17,6 +17,7 @@ const MealItemForm = ({ id, onAddToCart }) => {
     e.preventDefault();
     onAddToCart(amount); //해당 컴포넌트가 기억하고 있는 수량 상태값을 넘김
     // 부모가 전달해준 함수 호출하면서 amount 넘겨줌
+    setAmount(1); //담기 后 1
   };
 
   return (
@@ -30,7 +31,8 @@ const MealItemForm = ({ id, onAddToCart }) => {
           min: '1',
           max: '5',
           step: '1',
-          defaultValue: '1',
+          //defaultValue: '1',
+          value: amount, //담기 后 1
         }}
       />
       <button>담기</button>

@@ -1,7 +1,7 @@
 import React from 'react';
 import './ChartBar.css';
 
-// ChartBar 컴포넌트 정의
+// ChartBar 컴포넌트 정의 //key 없어도 @@ -> 필요없으면 안받아도 됨, import 안해도됨
 const ChartBar = ({ label, currentValue, totalValue }) => {
   let barFillHeight = '0%'; //% : css 때문에
 

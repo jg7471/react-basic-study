@@ -53,7 +53,7 @@ const passwordReducer = (state, action) => {
 };
 
 const Login = () => {
-  const { onLogin } = useContext(AuthContext); //@@@전역??
+  const { onLogin } = useContext(AuthContext); //@@ 이 것을 전역으로 사용하겠다?
   //useContext(AuthContext)는 AuthContext의 현재 값을 받아오는 것을 의미하며,
   //onLogin이라는 함수를 이용하여 로그인 기능을 수행
 
@@ -183,7 +183,7 @@ const Login = () => {
           <Button
             type="submit"
             className={styles.btn}
-            disabled={!formIsValid} // T/F : T일 경우 누를 수 없다 @@@
+            disabled={!formIsValid} // T/F : T일 경우 누를 수 없다 @@
             // GPT 이메일과 비밀번호가 모두 유효하지 않으면 버튼 비활성화
           >
             Login
