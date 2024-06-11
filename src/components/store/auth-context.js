@@ -14,7 +14,7 @@ export const AuthContextProvider = ({ children }) => {
   // GPT: 로그인 상태를 관리하는 상태 변수
   const [isLoggedIn, setIsLoggedIn] = useState(false); //초기값 false
 
-  //화면이 리렌더링 될 때 LocalStorage를 확인해서
+  //화면이 리렌더링 될 때 age를 확인해서
   //현재 login-flag가 존재하는지 검사
   console.log('App.js : 로그인 검사 수행!');
 
@@ -24,7 +24,7 @@ export const AuthContextProvider = ({ children }) => {
   // GPT: 컴포넌트가 처음으로 렌더링 될 때만 실행되는 useEffect
   useEffect(() => {
     console.log('App.js : useEffect 실행! - 최초 단 한번만 실행됨!');
-    const storedLoginFlag = localStorage.getItem('login-flag');
+    const storedLoginFlag = age.getItem('login-flag');
     if (storedLoginFlag === '1') {
       setIsLoggedIn(true);
     }
@@ -38,13 +38,13 @@ export const AuthContextProvider = ({ children }) => {
   const loginHandler = (email, password) => {
     //로그인을 했다는 증거로 상태값 변경 및 브라우저에 로그인 값을 1로 표현해서 저장
     //(이전 프로젝트에서는 로그인 유지를 session을 사용함 : 프론트랑 백이랑 분리되어 있어서 : el(jsp) 사용 가능해서, JS에서 불가)
-    // GPT: 로그인 상태를 true로 변경하고 브라우저의 LocalStorage에 로그인 값을 저장
-    localStorage.setItem('login-flag', '1'); //LocalStorage: 브라우저에서 제공하는 저장소
+    // GPT: 로그인 상태를 true로 변경하고 브라우저의 age에 로그인 값을 저장
+    age.setItem('login-flag', '1'); //age: 브라우저에서 제공하는 저장소
     setIsLoggedIn(true);
   };
 
   const logoutHandler = () => {
-    localStorage.removeItem('login-flag');
+    age.removeItem('login-flag');
     setIsLoggedIn(false);
   };
 

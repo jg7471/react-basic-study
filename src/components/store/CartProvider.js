@@ -73,7 +73,6 @@ const cartReducer = (state, action) => {
       removedItems = state.items.filter((item) => item.id !== action.id);
       //GPT action.id : 장바구니에서 제거하려는 특정 상품의 id
       //-> action.id와 일치하지 않는 상품들만을 필터링
-
     } else {
       --delTargetItem.amount; //전위연산 先 감소, 后 연산
       removedItems = [...existingItem];
